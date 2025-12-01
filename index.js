@@ -155,10 +155,8 @@ rdg_despesa.addEventListener('click', () => {
 });
 
 btn_enviar.addEventListener('click', () => {
-    let msg = "1. Copie o seguinte texto:<br>\n" + 
-    "Valor: R$" + txt_valor.value + " - " + 
-    (rdg_receita.checked ? `Receita: ${rdg_categoria_receita[getCheckedRadioIndex(rdg_categoria_receita)].value}` : `Despesa: ${rdg_categoria_despesa[getCheckedRadioIndex(rdg_categoria_despesa)].value}`) + "<br><br>\n" + 
-    '2. Acesse o link para abrir o grupo do whatsapp: <a href="https://chat.whatsapp.com/Dq6MJaG4Kxw2eC9EydBUx5" target="_blank">Enviar para whatspp</a><br><br>\n 3. Cole cole o texto copiado no grupo do whatsapp e envie.';
+    let msg = "Valor: R$" + txt_valor.value + " - " + 
+    (rdg_receita.checked ? `Receita: ${rdg_categoria_receita[getCheckedRadioIndex(rdg_categoria_receita)].value}` : `Despesa: ${rdg_categoria_despesa[getCheckedRadioIndex(rdg_categoria_despesa)].value}`);
     notificarOk(msg);
 });
 

@@ -70,6 +70,8 @@ document.body.appendChild(div_polite);
 const toast = new bootstrap.Toast(divNotificacoes);
 // toast.show();
 
+var descricao = "";
+
 /*
 <div class="alert alert-success" id="div_notificacoes_ok" style="display: none;"></div>
 <div class="alert alert-danger" id="div_notificacoes_nok" style="display: none;"></div>*/
@@ -84,7 +86,11 @@ function notificarOk(msg) {
     // }, 5000);
     div_toast_body.classList.remove("alert-danger");
     div_toast_body.classList.add("alert-success");
-    div_toast_body.innerHTML = msg;
+    descricao = msg;
+    div_toast_body.innerHTML = "1. Clique em \"Copiar\", para copiar o seguinte texto:<br>\n" + 
+    msg + "<br><br>\n" + 
+    '2. Acesse o link para abrir o grupo do whatsapp: <a href="https://chat.whatsapp.com/Dq6MJaG4Kxw2eC9EydBUx5" target="_blank">Enviar para whatspp</a><br><br>\n' + 
+    "3. Cole o texto copiado no grupo do whatsapp e envie.";
     strong_me_auto.innerText = txt_titulo_notificacao + " (" + div_toast_body.innerText.length + " caracteres)";
     toast.show();
 }
@@ -98,7 +104,12 @@ function notificarNok(msg) {
     // }, 5000);
     div_toast_body.classList.remove("alert-success");
     div_toast_body.classList.add("alert-danger");
-    div_toast_body.innerHTML = msg;
+    descricao = msg;
+    div_toast_body.innerHTML = "1. Clique em \"Copiar\", para copiar o seguinte texto:<br>\n" + 
+    msg + "<br><br>\n" + 
+    '2. Acesse o link para abrir o grupo do whatsapp: <a href="https://chat.whatsapp.com/Dq6MJaG4Kxw2eC9EydBUx5" target="_blank">Enviar para whatspp</a><br><br>\n' + 
+    "3. Cole o texto copiado no grupo do whatsapp e envie.";
+    strong_me_auto.innerText = txt_titulo_notificacao + " (" + div_toast_body.innerText.length + " caracteres)";
     strong_me_auto.innerText = txt_titulo_notificacao + " (" + div_toast_body.innerText.length + " caracteres)";
     toast.show();
 }
@@ -129,12 +140,12 @@ function fallbackCopyTextToClipboard(text) {
 
 function copiarTexto() {
     if (!navigator.clipboard) {
-        fallbackCopyTextToClipboard(div_toast_body.innerText);
+        fallbackCopyTextToClipboard(descricao);
         alert("Fallback");
         return;
     }
 
-    navigator.clipboard.writeText(div_toast_body.innerText).then(function() {
+    navigator.clipboard.writeText(descricao).then(function() {
         alert('Texto copiado com sucesso!');
     }, function(err) {
         alert('Não foi possível copiar o texto!');
