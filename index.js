@@ -97,6 +97,8 @@ const btn_colar_categoria_despesa_outros = document.getElementById('btn_colar_ca
 const txt_categoria_despesa_outros = document.getElementById('txt_categoria_despesa_outros');
 const btn_limpar_categoria_despesa_outros = document.getElementById('btn_limpar_categoria_despesa_outros');
 
+const btn_enviar = document.getElementById('btn_enviar');
+
 [
     btn_colar_data,
     btn_colar_valor,
@@ -143,9 +145,34 @@ txt_valor.focus();
 rdg_receita.addEventListener('click', () => {
     let myCollapse = new bootstrap.Collapse(div_despesa, { toggle: false });
     myCollapse.hide();
+    uncheckRadios(rdg_categoria_despesa);
 });
 
 rdg_despesa.addEventListener('click', () => {
     let myCollapse = new bootstrap.Collapse(div_receita, { toggle: false });
     myCollapse.hide();
+    uncheckRadios(rdg_categoria_receita);
 });
+
+btn_enviar.addEventListener('click', () => {
+    let msg = "1. Copie o seguinte texto:<br>\n" + 
+    "Valor: R$" + txt_valor.value + " - " + 
+    (rdg_receita.checked ? `Receita: ${rdg_categoria_receita[getCheckedRadioIndex(rdg_categoria_receita)].value}` : `Despesa: ${rdg_categoria_despesa[getCheckedRadioIndex(rdg_categoria_despesa)].value}`) + "<br><br>\n" + 
+    '2. Acesse o link para abrir o grupo do whatsapp: <a href="https://chat.whatsapp.com/Dq6MJaG4Kxw2eC9EydBUx5" target="_blank">Enviar para whatspp</a><br><br>\n 3. Cole cole o texto copiado no grupo do whatsapp e envie.';
+    notificarOk(msg);
+});
+
+function getCheckedRadioIndex(radioGroupElement) {
+  for (let i = 0; i < radioGroupElement.length; i++) {
+    if (radioGroupElement[i].checked) {
+      return i; // Return the index of the checked radio button
+    }
+  }
+  return -1; // Return -1 if no radio button is checked
+}
+
+function uncheckRadios(radioGroupElement) {
+  for (let i = 0; i < radioGroupElement.length; i++) {
+    radioGroupElement[i].checked = false;
+  }
+}
