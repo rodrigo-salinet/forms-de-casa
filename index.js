@@ -142,16 +142,27 @@ preencherData();
 
 txt_valor.focus();
 
-rdg_receita.addEventListener('click', () => {
-    let myCollapse = new bootstrap.Collapse(div_despesa, { toggle: false });
-    myCollapse.hide();
-    uncheckRadios(rdg_categoria_despesa);
+rdg_receita_despesa.forEach(function(el) {
+    el.addEventListener('click', () => {
+        let collapse_receita = new bootstrap.Collapse(div_receita, { toggle: false });
+        if (rdg_receita.checked) {
+            collapse_receita.show();
+        } else {
+            collapse_receita.hide();
+        }
+
+        let collapse_despesa = new bootstrap.Collapse(div_despesa, { toggle: false });
+        if (rdg_despesa.checked) {
+            collapse_despesa.show();
+        } else {
+            collapse_despesa.hide();
+        }
+    });
 });
 
 rdg_despesa.addEventListener('click', () => {
     let myCollapse = new bootstrap.Collapse(div_receita, { toggle: false });
     myCollapse.hide();
-    uncheckRadios(rdg_categoria_receita);
 });
 
 btn_enviar.addEventListener('click', () => {
@@ -160,17 +171,23 @@ btn_enviar.addEventListener('click', () => {
     notificarOk(msg);
 });
 
-function getCheckedRadioIndex(radioGroupElement) {
-  for (let i = 0; i < radioGroupElement.length; i++) {
-    if (radioGroupElement[i].checked) {
-      return i; // Return the index of the checked radio button
-    }
-  }
-  return -1; // Return -1 if no radio button is checked
-}
+rdg_categoria_despesa.forEach(function(el) {
+    el.addEventListener('click', () => {
+        let myCollapse = new bootstrap.Collapse(div_despesa_outros, { toggle: false });
+        if (rdg_categoria_despesa_outros.checked) {
+            myCollapse.show();
+        } else {
+            myCollapse.hide();
+            txt_categoria_despesa_outros.value = '';
+        }
+    });
+});
 
-function uncheckRadios(radioGroupElement) {
-  for (let i = 0; i < radioGroupElement.length; i++) {
-    radioGroupElement[i].checked = false;
-  }
+function getCheckedRadioIndex(radioGroupElement) {
+    for (let i = 0; i < radioGroupElement.length; i++) {
+        if (radioGroupElement[i].checked) {
+            return i; // Return the index of the checked radio button
+        }
+    }
+    return -1; // Return -1 if no radio button is checked
 }
