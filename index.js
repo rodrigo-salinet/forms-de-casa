@@ -244,6 +244,12 @@ function limparCampos() {
     let collapse_categoria_outros = new bootstrap.Collapse(div_categoria_outros, { toggle: false });
     collapse_categoria_outros.hide();
 
+    let collapse_receita = new bootstrap.Collapse(div_receita, { toggle: false });
+    collapse_receita.hide();
+
+    let collapse_despesa = new bootstrap.Collapse(div_despesa, { toggle: false });
+    collapse_despesa.hide();
+
     txt_valor.focus();
 }
 
