@@ -213,10 +213,35 @@ async function enviarFormulario(msg) {
 
         // Como usamos 'no-cors', o fetch não retorna erro mesmo que falhe.
         // Se chegou aqui, a requisição foi enviada.
-        notificarOk(msg);       
+        limparCampos();
+        notificarOk(msg);
     } catch (error) {
         notificarNok("Erro ao enviar:", error);
     }
+}
+
+function limparCampos() {
+    txt_data.value = '';
+    preencherData();
+
+    txt_horario.value = '';
+    preencherHorario();
+
+    rdg_mes_referencia.forEach(radio => radio.checked = false);
+    rdg_mes_referencia[mes_atual].checked = true;
+
+    rdg_ano_referencia.forEach(radio => radio.checked = false);
+    document.getElementById("rdg_" + ano_atual).checked = true;
+
+    txt_valor.value = '';
+    rdg_titular.forEach(radio => radio.checked = false);
+    rdg_especie.forEach(radio => radio.checked = false);
+    rdg_receita_despesa.forEach(radio => radio.checked = false);
+    rdg_categoria_receita.forEach(radio => radio.checked = false);
+    rdg_categoria_despesa.forEach(radio => radio.checked = false);
+    txt_categoria_outros.value = '';
+
+    txt_valor.focus();
 }
 
 [
