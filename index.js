@@ -199,8 +199,7 @@ async function enviarFormulario(msg) {
     } else if (getCheckedRadioIndex(rdg_categoria_receita) >= 0) {
         formData.append('entry.1112124299', rdg_categoria_receita[getCheckedRadioIndex(rdg_categoria_receita)].value); // Descrição Categoria
     }
-    // formData.append('entry.1112124299', rdg_categoria_despesa[getCheckedRadioIndex(rdg_categoria_despesa)].value); // Descrição Categoria
-    formData.append('entry.2055552332', txt_categoria_outros.value.trim()); // Outros
+    formData.append('entry.360468464', txt_categoria_outros.value.trim()); // Outros
 
     try {
         await fetch(SUBMIT_URL, {
