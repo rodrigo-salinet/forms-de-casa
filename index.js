@@ -239,7 +239,10 @@ function limparCampos() {
     rdg_receita_despesa.forEach(radio => radio.checked = false);
     rdg_categoria_receita.forEach(radio => radio.checked = false);
     rdg_categoria_despesa.forEach(radio => radio.checked = false);
+
     txt_categoria_outros.value = '';
+    let collapse_categoria_outros = new bootstrap.Collapse(div_categoria_outros, { toggle: false });
+    collapse_categoria_outros.hide();
 
     txt_valor.focus();
 }
