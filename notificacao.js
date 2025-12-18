@@ -87,8 +87,8 @@ function notificarOk(msg) {
     div_toast_body.classList.remove("alert-danger");
     div_toast_body.classList.add("alert-success");
     descricao = msg;
-    div_toast_body.innerHTML = "1. Clique em \"Copiar\", para copiar o seguinte texto:<br>\n" + 
-    msg + "<br><br>\n" + 
+    div_toast_body.innerHTML = "1. Clique em \"Copiar\", para copiar o seguinte texto:<br><br>\n" + 
+    "<b>" + msg + "</b><br><br>\n" + 
     '2. Acesse o link para abrir o grupo do whatsapp: <a href="https://chat.whatsapp.com/Dq6MJaG4Kxw2eC9EydBUx5" target="_blank">Enviar para whatspp</a><br><br>\n' + 
     "3. Cole o texto copiado no grupo do whatsapp e envie.";
     strong_me_auto.innerText = txt_titulo_notificacao + " (" + div_toast_body.innerText.length + " caracteres)";
@@ -105,8 +105,8 @@ function notificarNok(msg) {
     div_toast_body.classList.remove("alert-success");
     div_toast_body.classList.add("alert-danger");
     descricao = msg;
-    div_toast_body.innerHTML = "1. Clique em \"Copiar\", para copiar o seguinte texto:<br>\n" + 
-    msg + "<br><br>\n" + 
+    div_toast_body.innerHTML = "1. Clique em \"Copiar\", para copiar o seguinte texto:<br><br>\n" + 
+    "<b>" + msg + "</b><br><br>\n" + 
     '2. Acesse o link para abrir o grupo do whatsapp: <a href="https://chat.whatsapp.com/Dq6MJaG4Kxw2eC9EydBUx5" target="_blank">Enviar para whatspp</a><br><br>\n' + 
     "3. Cole o texto copiado no grupo do whatsapp e envie.";
     strong_me_auto.innerText = txt_titulo_notificacao + " (" + div_toast_body.innerText.length + " caracteres)";

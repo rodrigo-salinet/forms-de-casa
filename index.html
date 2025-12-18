@@ -17,7 +17,6 @@
                     <h1 class="text-center p-2"><i class="fa-solid fa-shopping-cart"></i> Forms <i class="fa-solid fa-basket-shopping"></i></h1>
                     <h2 class="text-center p-2"><i class="fa-solid fa-chart-pie"></i> De Casa <i class="fa-solid fa-cat"></i></h2>
                 </div>
-
                 <div class="container-fluid card custom-card shadow p-3">
                     <h4>
                         <i class="fa-solid fa-dollar"></i> Prestação de conta:
@@ -38,10 +37,26 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-section">
+                        <div class="row w-100 mb-3">
+                            <div class="col-md-auto">
+                                <label for="txt_horario"><i class="fa-solid fa-clock"></i> 2. Horário:</label>
+                                <div class="input-group">
+                                    <button type="button" class="btn btn-dark" id="btn_colar_horario" title="Colar Horário">
+                                        <i class="fa-solid fa-paste"></i>
+                                    </button>
+                                    <input type="time" class="form-control" id="txt_horario">
+                                    <button type="button" class="btn btn-dark" id="btn_limpar_horario" title="Limpar Horário">
+                                        <i class="fa-solid fa-eraser"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-section mb-3">
                         <div class="row w-100">
                             <div class="col-md-auto">
-                                <label for="rdg_mes_referencia"><i class="fa-solid fa-calendar"></i> 2. Mês do Orçamento:</label>
+                                <label><i class="fa-solid fa-calendar"></i> 3. Mês do Orçamento:</label>
                             </div>
                         </div>
                         <div class="row w-100">
@@ -120,7 +135,7 @@
                     <div class="form-section mb-3">
                         <div class="row w-100">
                             <div class="col-md-auto">
-                                <label for="rdg_ano_referencia"><i class="fa-solid fa-calendar"></i> 3. Mês do Orçamento:</label>
+                                <label><i class="fa-solid fa-calendar"></i> 4. Ano do Orçamento:</label>
                             </div>
                         </div>
                         <div class="row w-100">
@@ -169,7 +184,7 @@
                     <div class="form-section">
                         <div class="row w-100 mb-3">
                             <div class="col-md-auto">
-                                <label for="txt_valor"><i class="fa-solid fa-dollar"></i> 4. Valor:</label>
+                                <label for="txt_valor"><i class="fa-solid fa-dollar"></i> 5. Valor:</label>
                                 <div class="input-group">
                                     <button type="button" class="btn btn-dark" id="btn_colar_valor" title="Colar Valor">
                                         <i class="fa-solid fa-paste"></i>
@@ -185,7 +200,7 @@
                     <div class="form-section mb-3">
                         <div class="row w-100">
                             <div class="col-md-auto">
-                                <label for="rdg_titular"><i class="fa-solid fa-dollar"></i> 5. Titular:</label>
+                                <label><i class="fa-solid fa-user"></i> 6. Titular:</label>
                             </div>
                         </div>
                         <div class="row w-100">
@@ -210,7 +225,7 @@
                     <div class="form-section mb-3">
                         <div class="row w-100">
                             <div class="col-md-auto">
-                                <label for="rdg_especie"><i class="fa-solid fa-dollar"></i> 6. Espécie:</label>
+                                <label><i class="fa-solid fa-credit-card"></i> 7. Espécie:</label>
                             </div>
                         </div>
                         <div class="row w-100">
@@ -247,7 +262,7 @@
                     <div class="form-section">
                         <div class="row w-100 mb-3">
                             <div class="col-md-auto">
-                                <label for="rdg_receita_despesa"><i class="fa-solid fa-dollar"></i> 7. Ganho/Gasto:</label>
+                                <label><i class="fa-solid fa-up-down"></i> 8. Categoria:</label>
                                 <div class="container">
                                     <input type="radio" class="btn-check" name="rdg_receita_despesa" id="rdg_receita" autocomplete="off" value="Receita">
                                     <label class="btn" for="rdg_receita">Receita</label>
@@ -262,43 +277,49 @@
                         <div class="form-section">
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <label for="rdg_categoria_receita"><i class="fa-solid fa-dollar"></i> Categoria da Receita:</label>
+                                    <label><i class="fa-solid fa-turn-down"></i> Categoria da Receita:</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_salario" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_salario" autocomplete="off" value="SALÁRIO">
                                     <label class="btn" for="rdg_categoria_receita_salario" title="(RENDA PRINCIPAL)">SALÁRIO</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_renda_extra" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_renda_extra" autocomplete="off" value="RENDA EXTRA / FREELANCE">
                                     <label class="btn" for="rdg_categoria_receita_renda_extra" title="(RENDA EXTRA)">RENDA EXTRA / FREELANCE</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_retorno_investimento" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_retorno_investimento" autocomplete="off" value="RETORNO DE INVESTIMENTO">
                                     <label class="btn" for="rdg_categoria_receita_retorno_investimento" title="(LUCRO)">RETORNO DE INVESTIMENTO</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_presente_doacao" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_presente_doacao" autocomplete="off" value="PRESENTE / DOAÇÃO">
                                     <label class="btn" for="rdg_categoria_receita_presente_doacao" title="(PESSOAL)">PRESENTE / DOAÇÃO</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_reembolso" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_reembolso" autocomplete="off" value="REEMBOLSO">
                                     <label class="btn" for="rdg_categoria_receita_reembolso" title="(RENDA)">REEMBOLSO</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_aluguel_imovel" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_aluguel_imovel" autocomplete="off" value="ALUGUEL / IMÓVEL">
                                     <label class="btn" for="rdg_categoria_receita_aluguel_imovel" title="(MORADIA)">ALUGUEL / IMÓVEL</label>
+                                </div>
+                            </div>
+                            <div class="row w-100">
+                                <div class="col-md-auto">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_receita" id="rdg_categoria_receita_outros" autocomplete="off" value="OUTROS">
+                                    <label class="btn" for="rdg_categoria_receita_outros" title="(OUTROS)">OUTROS</label>
                                 </div>
                             </div>
                         </div>
@@ -307,166 +328,162 @@
                         <div class="form-section">
                             <div class="row w-100 mb-3">
                                 <div class="col-md-auto">
-                                    <label for="rdg_categoria_despesa"><i class="fa-solid fa-dollar"></i> Categoria da Despesa:</label>
+                                    <label><i class="fa-solid fa-turn-up"></i> Categoria da Despesa:</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_aluguel_moradia" autocomplete="off" name="ALUGUEL">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_aluguel_moradia" autocomplete="off" value="ALUGUEL">
                                     <label class="btn" for="rdg_categoria_despesa_aluguel_moradia" title="(MORADIA)">ALUGUEL</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_energia_consumo" autocomplete="off" name="ENERGIA">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_energia_consumo" autocomplete="off" value="ENERGIA">
                                     <label class="btn" for="rdg_categoria_despesa_energia_consumo" title="(CONSUMO)">ENERGIA</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_agua_consumo" autocomplete="off" name="ÁGUA">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_agua_consumo" autocomplete="off" value="ÁGUA">
                                     <label class="btn" for="rdg_categoria_despesa_agua_consumo" title="(CONSUMO)">ÁGUA</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_gas_consumo" autocomplete="off" name="GÁS">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_gas_consumo" autocomplete="off" value="GÁS">
                                     <label class="btn" for="rdg_categoria_despesa_gas_consumo" title="(CONSUMO)">GÁS</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_internet_comunicacao" autocomplete="off" name="INTERNET">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_internet_comunicacao" autocomplete="off" value="INTERNET">
                                     <label class="btn" for="rdg_categoria_despesa_internet_comunicacao" title="(COMUNICAÇÃO)">INTERNET</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_operadora_celular_comunicacao" autocomplete="off" name="OPERADORA CELULAR">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_operadora_celular_comunicacao" autocomplete="off" value="OPERADORA CELULAR">
                                     <label class="btn" for="rdg_categoria_despesa_operadora_celular_comunicacao" title="(COMUNICAÇÃO)">OPERADORA CELULAR</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_iptu_imposto" autocomplete="off" name="IPTU">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_iptu_imposto" autocomplete="off" value="IPTU">
                                     <label class="btn" for="rdg_categoria_despesa_iptu_imposto" title="(IMPOSTO)">IPTU</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_manutencao_reparo_custo" autocomplete="off" name="MANUTENÇÃO / REPARO">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_manutencao_reparo_custo" autocomplete="off" value="MANUTENÇÃO / REPARO">
                                     <label class="btn" for="rdg_categoria_despesa_manutencao_reparo_custo" title="(CUSTO)">MANUTENÇÃO / REPARO</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_dizimo_oferta_doacao" autocomplete="off" name="DÍZIMO E OFERTA">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_dizimo_oferta_doacao" autocomplete="off" value="DÍZIMO E OFERTA">
                                     <label class="btn" for="rdg_categoria_despesa_dizimo_oferta_doacao" title="(DOAÇÃO)">DÍZIMO E OFERTA</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_carne" autocomplete="off" name="CARNÊ DESCONTO EM FOLHA">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_carne" autocomplete="off" value="CARNÊ DESCONTO EM FOLHA">
                                     <label class="btn" for="rdg_categoria_despesa_carne" title="(CASAS BAHIA)">CARNÊ DESCONTO EM FOLHA</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_filho" autocomplete="off" name="FILHO">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_filho" autocomplete="off" value="FILHO">
                                     <label class="btn" for="rdg_categoria_despesa_filho" title="(PESSOAL)">FILHO</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_mercado" autocomplete="off" name="MERCADO">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_mercado" autocomplete="off" value="MERCADO">
                                     <label class="btn" for="rdg_categoria_despesa_mercado" title="(ALIMENTAÇÃO)">MERCADO</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_moradia" autocomplete="off" name="MORADIA">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_moradia" autocomplete="off" value="MORADIA">
                                     <label class="btn" for="rdg_categoria_despesa_moradia" title="(MORADIA)">MORADIA</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_pessoal" autocomplete="off" name="PESSOAL">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_pessoal" autocomplete="off" value="PESSOAL">
                                     <label class="btn" for="rdg_categoria_despesa_pessoal" title="(PESSOAL)">PESSOAL</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_restaurante" autocomplete="off" name="RESTAURANTE">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_restaurante" autocomplete="off" value="RESTAURANTE">
                                     <label class="btn" for="rdg_categoria_despesa_restaurante" title="(ALIMENTAÇÃO)">RESTAURANTE</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_saude" autocomplete="off" name="SAÚDE">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_saude" autocomplete="off" value="SAÚDE">
                                     <label class="btn" for="rdg_categoria_despesa_saude" title="(SAÚDE)">SAÚDE</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_transporte" autocomplete="off" name="TRANSPORTE">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_transporte" autocomplete="off" value="TRANSPORTE">
                                     <label class="btn" for="rdg_categoria_despesa_transporte" title="(TRANSPORTE)">TRANSPORTE</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_cartao_ge" autocomplete="off" name="CARTÃO GÊ">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_cartao_ge" autocomplete="off" value="CARTÃO GÊ">
                                     <label class="btn" for="rdg_categoria_despesa_cartao_ge" title="(PARCELAMENTO)">CARTÃO GÊ</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_apartamento" autocomplete="off" name="APARTAMENTO">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_apartamento" autocomplete="off" value="APARTAMENTO">
                                     <label class="btn" for="rdg_categoria_despesa_apartamento" title="(INVESTIMENTO)">APARTAMENTO</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_investimento" autocomplete="off" name="INVESTIMENTO">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_investimento" autocomplete="off" value="INVESTIMENTO">
                                     <label class="btn" for="rdg_categoria_despesa_investimento" title="(INVESTIMENTO)">INVESTIMENTO</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_emprestimo" autocomplete="off" name="EMPRÉSTIMO">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_emprestimo" autocomplete="off" value="EMPRÉSTIMO">
                                     <label class="btn" for="rdg_categoria_despesa_emprestimo" title="(ADIANTAMENTO)">EMPRÉSTIMO</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_educacao" autocomplete="off" name="EDUCAÇÃO">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_educacao" autocomplete="off" value="EDUCAÇÃO">
                                     <label class="btn" for="rdg_categoria_despesa_educacao" title="(EDUCAÇÃO)">EDUCAÇÃO</label>
                                 </div>
                             </div>
                             <div class="row w-100">
                                 <div class="col-md-auto">
-                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_outros" autocomplete="off" name="OUTROS">
+                                    <input type="radio" class="btn-check" name="rdg_categoria_despesa" id="rdg_categoria_despesa_outros" autocomplete="off" value="OUTROS">
                                     <label class="btn" for="rdg_categoria_despesa_outros" title="(OUTROS)">OUTROS</label>
                                 </div>
                             </div>
-                            <div class="row w-100">
+                        </div>
+                    </div>
+                    <div class="container-fluid collapse" id="div_categoria_outros" style="padding-top: 15px; padding-bottom: 15px;">
+                        <div class="form-section">
+                            <div class="row w-100 mb-3">
                                 <div class="col-md-auto">
-                                    <div class="container-fluid collapse" id="div_despesa_outros" style="padding-top: 15px; padding-bottom: 15px;">
-                                            <div class="form-section">
-                                                <div class="row w-100 mb-3">
-                                                    <div class="col-md-auto">
-                                                        <div class="input-group">
-                                                            <button type="button" class="btn btn-dark" id="btn_colar_categoria_despesa_outros" title="Colar Despesa Outros">
-                                                                <i class="fa-solid fa-paste"></i>
-                                                            </button>
-                                                            <input type="text" class="form-control" id="txt_categoria_despesa_outros">
-                                                            <button type="button" class="btn btn-dark" id="btn_limpar_categoria_despesa_outros" title="Limpar Despesa Outros">
-                                                                <i class="fa-solid fa-eraser"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <label for="txt_categoria_outros">Descreva Outros:</label>
+                                    <div class="input-group">
+                                        <button type="button" class="btn btn-dark" id="btn_colar_categoria_outros" title="Colar Categoria Outros">
+                                            <i class="fa-solid fa-paste"></i>
+                                        </button>
+                                        <input type="text" class="form-control" id="txt_categoria_outros">
+                                        <button type="button" class="btn btn-dark" id="btn_limpar_categoria_outros" title="Limpar Categoria Outros">
+                                            <i class="fa-solid fa-eraser"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

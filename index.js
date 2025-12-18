@@ -1,8 +1,14 @@
 const div_titulo = document.getElementById('div_titulo');
 
+const frm_prestacao_conta = document.getElementById('frm_prestacao_conta');
+
 const btn_colar_data = document.getElementById('btn_colar_data');
 const txt_data = document.getElementById('txt_data');
 const btn_limpar_data = document.getElementById('btn_limpar_data');
+
+const btn_colar_horario = document.getElementById('btn_colar_horario');
+const txt_horario = document.getElementById('txt_horario');
+const btn_limpar_horario = document.getElementById('btn_limpar_horario');
 
 const rdg_mes_referencia = document.getElementsByName('rdg_mes_referencia');
 const data = new Date();
@@ -89,20 +95,136 @@ const rdg_categoria_despesa_apartamento = document.getElementById('rdg_categoria
 const rdg_categoria_despesa_investimento = document.getElementById('rdg_categoria_despesa_investimento');
 const rdg_categoria_despesa_emprestimo = document.getElementById('rdg_categoria_despesa_emprestimo');
 const rdg_categoria_despesa_educacao = document.getElementById('rdg_categoria_despesa_educacao');
+
 const rdg_categoria_despesa_outros = document.getElementById('rdg_categoria_despesa_outros');
+const rdg_categoria_receita_outros = document.getElementById('rdg_categoria_receita_outros');
 
-const div_despesa_outros = document.getElementById('div_despesa_outros');
+const div_categoria_outros = document.getElementById('div_categoria_outros');
 
-const btn_colar_categoria_despesa_outros = document.getElementById('btn_colar_categoria_despesa_outros');
-const txt_categoria_despesa_outros = document.getElementById('txt_categoria_despesa_outros');
-const btn_limpar_categoria_despesa_outros = document.getElementById('btn_limpar_categoria_despesa_outros');
+const btn_colar_categoria_outros = document.getElementById('btn_colar_categoria_outros');
+const txt_categoria_outros = document.getElementById('txt_categoria_outros');
+const btn_limpar_categoria_outros = document.getElementById('btn_limpar_categoria_outros');
 
 const btn_enviar = document.getElementById('btn_enviar');
 
+btn_enviar.addEventListener('click', () => {
+    event.preventDefault();
+
+    let data = txt_data.value.trim();
+    if (data.length === 0) {
+        notificarNok('Por favor, preencha a Data');
+        txt_data.focus();
+        return false;
+    }
+
+    let horario = txt_horario.value.trim();
+    if (horario.length === 0) {
+        notificarNok('Por favor, preencha o Horário');
+        txt_horario.focus();
+        return false;
+    }
+
+    let mes_orcamento = rdg_mes_referencia[getCheckedRadioIndex(rdg_mes_referencia)].value;
+    if (mes_orcamento.length === 0) {
+        notificarNok('Por favor, selecione o Mês do Orçamento');
+        rdg_mes_referencia.focus();
+        return false;
+    }
+
+    let ano_orcamento = rdg_ano_referencia[getCheckedRadioIndex(rdg_ano_referencia)].value;
+    if (ano_orcamento.length === 0) {
+        notificarNok('Por favor, selecione o Ano do Orçamento');
+        rdg_ano_referencia.focus();
+        return false;
+    }
+
+    let valor = txt_valor.value.trim();
+    if (valor.length === 0) {
+        notificarNok('Por favor, digite o Valor');
+        txt_valor.focus();
+        return false;
+    }
+
+    if (getCheckedRadioIndex(rdg_titular) < 0) {
+        notificarNok('Por favor, selecione o Titular');
+        rdg_titular.focus();
+        return false;
+    }
+
+    if (getCheckedRadioIndex(rdg_especie) < 0) {
+        notificarNok('Por favor, selecione a Espécie');
+        rdg_especie.focus();
+        return false;
+    }
+
+    if (getCheckedRadioIndex(rdg_receita_despesa) < 0) {
+        notificarNok('Por favor, selecione a Categoria');
+        rdg_receita_despesa.focus();
+        return false;
+    }
+
+    if (getCheckedRadioIndex(rdg_categoria_receita) < 0 && getCheckedRadioIndex(rdg_categoria_despesa) < 0) {
+        notificarNok('Por favor, selecione uma Categoria (Receita ou Despesa)');
+        rdg_categoria_receita.focus();
+        return false;
+    }
+
+    let msg = "Valor: R$" + txt_valor.value + " - ";
+    if (rdg_receita.checked) {
+        msg += `Receita: ${rdg_categoria_receita[getCheckedRadioIndex(rdg_categoria_receita)].value}`;
+    }
+    if (rdg_despesa.checked) {
+        msg += `Despesa: ${rdg_categoria_despesa[getCheckedRadioIndex(rdg_categoria_despesa)].value}`;
+    }
+
+    enviarFormulario(msg);
+});
+
+async function enviarFormulario(msg) {
+    const SUBMIT_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSf-7SooMHFSmDEtFLfUSZMkgrnXFX4vxoKqAxatlxsNYZ3PGg/formResponse";
+
+    const formData = new URLSearchParams();
+
+    formData.append('entry.1582996369', txt_data.value.trim()); // Data Lançamento
+    formData.append('entry.2017736934', txt_horario.value.trim()); // Horário Lançamento
+    formData.append('entry.1787866131', rdg_mes_referencia[getCheckedRadioIndex(rdg_mes_referencia)].value); // Mês Orçamento
+    formData.append('entry.17633339', rdg_ano_referencia[getCheckedRadioIndex(rdg_ano_referencia)].value); // Ano Orçamento
+    formData.append('entry.923522987', txt_valor.value.trim()); // Valor
+    formData.append('entry.1932979606', rdg_titular[getCheckedRadioIndex(rdg_titular)].value); // Titular
+    formData.append('entry.1773520531', rdg_especie[getCheckedRadioIndex(rdg_especie)].value); // Espécie
+    formData.append('entry.1003291364', rdg_receita_despesa[getCheckedRadioIndex(rdg_receita_despesa)].value); // Categoria
+
+    if (getCheckedRadioIndex(rdg_categoria_despesa) >= 0) {
+        formData.append('entry.1112124299', rdg_categoria_despesa[getCheckedRadioIndex(rdg_categoria_despesa)].value); // Descrição Categoria
+    } else if (getCheckedRadioIndex(rdg_categoria_receita) >= 0) {
+        formData.append('entry.1112124299', rdg_categoria_receita[getCheckedRadioIndex(rdg_categoria_receita)].value); // Descrição Categoria
+    }
+    // formData.append('entry.1112124299', rdg_categoria_despesa[getCheckedRadioIndex(rdg_categoria_despesa)].value); // Descrição Categoria
+    formData.append('entry.2055552332', txt_categoria_outros.value.trim()); // Outros
+
+    try {
+        await fetch(SUBMIT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Essencial para evitar erros de CORS
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData.toString()
+        });
+
+        // Como usamos 'no-cors', o fetch não retorna erro mesmo que falhe.
+        // Se chegou aqui, a requisição foi enviada.
+        notificarOk(msg);       
+    } catch (error) {
+        notificarNok("Erro ao enviar:", error);
+    }
+}
+
 [
     btn_colar_data,
+    btn_colar_horario,
     btn_colar_valor,
-    btn_colar_categoria_despesa_outros
+    btn_colar_categoria_outros
 ].forEach(function (el) {
     el.addEventListener('click', () => {
         let idElemento = el.id.replace('btn_colar_', 'txt_');
@@ -114,8 +236,9 @@ const btn_enviar = document.getElementById('btn_enviar');
 
 [
     btn_limpar_data,
+    btn_limpar_horario,
     btn_limpar_valor,
-    btn_limpar_categoria_despesa_outros
+    btn_limpar_categoria_outros
 ].forEach(function (el) {
     el.addEventListener('click', () => {
         let idElemento = el.id.replace('btn_limpar_', 'txt_');
@@ -140,6 +263,15 @@ function preencherData() {
 
 preencherData();
 
+function preencherHorario() {
+    const dataAtual = new Date();
+    const hora = String(dataAtual.getHours()).padStart(2, '0');
+    const minuto = String(dataAtual.getMinutes()).padStart(2, '0');
+    txt_horario.value = `${hora}:${minuto}`;
+}
+
+preencherHorario();
+
 txt_valor.focus();
 
 rdg_receita_despesa.forEach(function(el) {
@@ -157,6 +289,12 @@ rdg_receita_despesa.forEach(function(el) {
         } else {
             collapse_despesa.hide();
         }
+
+        let collapse_categoria_outros = new bootstrap.Collapse(div_categoria_outros, { toggle: false });
+        collapse_categoria_outros.hide();
+
+        rdg_categoria_receita_outros.checked = false;
+        rdg_categoria_despesa_outros.checked = false;
     });
 });
 
@@ -165,29 +303,36 @@ rdg_despesa.addEventListener('click', () => {
     myCollapse.hide();
 });
 
-btn_enviar.addEventListener('click', () => {
-    let msg = "Valor: R$" + txt_valor.value + " - " + 
-    (rdg_receita.checked ? `Receita: ${rdg_categoria_receita[getCheckedRadioIndex(rdg_categoria_receita)].value}` : `Despesa: ${rdg_categoria_despesa[getCheckedRadioIndex(rdg_categoria_despesa)].value}`);
-    notificarOk(msg);
+rdg_categoria_receita.forEach(function(el) {
+    el.addEventListener('click', () => {
+        let myCollapse = new bootstrap.Collapse(div_categoria_outros, { toggle: false });
+        if (rdg_categoria_receita_outros.checked) {
+            myCollapse.show();
+        } else {
+            myCollapse.hide();
+            txt_categoria_outros.value = '';
+        }
+    });
 });
 
 rdg_categoria_despesa.forEach(function(el) {
     el.addEventListener('click', () => {
-        let myCollapse = new bootstrap.Collapse(div_despesa_outros, { toggle: false });
+        let myCollapse = new bootstrap.Collapse(div_categoria_outros, { toggle: false });
         if (rdg_categoria_despesa_outros.checked) {
             myCollapse.show();
         } else {
             myCollapse.hide();
-            txt_categoria_despesa_outros.value = '';
+            txt_categoria_outros.value = '';
         }
     });
 });
 
 function getCheckedRadioIndex(radioGroupElement) {
+    let index = -1;
     for (let i = 0; i < radioGroupElement.length; i++) {
         if (radioGroupElement[i].checked) {
-            return i; // Return the index of the checked radio button
+            index = i; // Return the index of the checked radio button
         }
     }
-    return -1; // Return -1 if no radio button is checked
+    return index; // Return -1 if no radio button is checked
 }
